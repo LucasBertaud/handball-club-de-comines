@@ -1,10 +1,9 @@
 import { Module } from '@nestjs/common';
-import { ClientsController } from './clients/clients.controller';
 import { DomainModule } from 'src/domain/domain.module';
-import { GetAllClientsUseCase } from 'src/domain/usecases/get_all_clients/get_all_clients.usecase';
+import { ArticlesController } from './articles.controller';
 @Module({
   imports: [DomainModule],
-  controllers: [ClientsController],
-  providers: [GetAllClientsUseCase],
+  controllers: [ArticlesController],
+  providers: [],
 })
 export class PresentationModule {}
