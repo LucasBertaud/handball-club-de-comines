@@ -1,19 +1,19 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import {Column, Entity, PrimaryGeneratedColumn} from 'typeorm';
 
 @Entity('news')
 export class NewsEntity {
-  @PrimaryGeneratedColumn()
-  id: number;
+    @PrimaryGeneratedColumn()
+    id: number;
 
-  @Column({ type: 'varchar', length: 100 })
-  title: string;
+    @Column({type: 'varchar', length: 100})
+    title: string;
 
-  @Column({ type: 'varchar', length: 50 })
-  image: string;
+    @Column({type: 'varchar', length: 50})
+    image: string;
 
-  @Column('text')
-  content: string;
+    @Column('text')
+    content: string;
 
-  @Column('date')
-  publication_date: Date;
+    @Column('date')
+    publication_date: Date;
 }
