@@ -1,4 +1,4 @@
-import {Entity, JoinTable, ManyToOne, PrimaryColumn} from "typeorm";
+import {Entity, JoinColumn, ManyToOne, PrimaryColumn} from "typeorm";
 import {MatchesEntity} from "./matches.entity";
 import {MembersEntity} from "./members.entity";
 
@@ -6,10 +6,16 @@ import {MembersEntity} from "./members.entity";
 export class PlayEntity {
 
     @PrimaryColumn()
-    @ManyToOne(type => MembersEntity) @JoinTable()
-    members: MembersEntity[];
+    memberId: number;
+
+    @ManyToOne(() => MembersEntity, member => member.plays)
+    @JoinColumn({ name: 'memberId' })
+    member: MembersEntity;
 
     @PrimaryColumn()
-    @ManyToOne(type => MatchesEntity) @JoinTable()
-    matches: MatchesEntity[];
+    matchId: number;
+
+    @ManyToOne(() => MatchesEntity, match => match.plays)
+    @JoinColumn({ name: 'matchId' })
+    match: MatchesEntity;
 } 
