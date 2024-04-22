@@ -1,15 +1,15 @@
-import {Entity, JoinTable, ManyToMany, PrimaryGeneratedColumn} from "typeorm";
+import {Entity, JoinTable, ManyToOne, PrimaryColumn} from "typeorm";
 import {MatchesEntity} from "./matches.entity";
 import {MembersEntity} from "./members.entity";
 
-@Entity("entity")
+@Entity("play")
 export class PlayEntity {
-    @PrimaryGeneratedColumn()
-    id: number;
 
-    @ManyToMany(type => MembersEntity) @JoinTable()
+    @PrimaryColumn()
+    @ManyToOne(type => MembersEntity) @JoinTable()
     members: MembersEntity[];
 
-    @ManyToMany(type => MatchesEntity) @JoinTable()
+    @PrimaryColumn()
+    @ManyToOne(type => MatchesEntity) @JoinTable()
     matches: MatchesEntity[];
-}
+} 
