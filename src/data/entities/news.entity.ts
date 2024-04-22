@@ -1,4 +1,5 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, PrimaryGeneratedColumn, ManyToOne } from 'typeorm';
+import { MembersEntity } from './members.entity';
 
 @Entity('news')
 export class NewsEntity {
@@ -16,4 +17,7 @@ export class NewsEntity {
 
   @Column('date')
   publication_date: Date;
+
+  @ManyToOne(type => MembersEntity, member => member.news)
+  member: MembersEntity;
 }
