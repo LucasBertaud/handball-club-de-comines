@@ -1,4 +1,6 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
+import { MatchesEntity } from './matches.entity';
+
 
 @Entity("adversary_teams")
 export class AdversaryTeamsEntity {
@@ -10,4 +12,8 @@ export class AdversaryTeamsEntity {
 
   @Column('text')
   logo: string;
+
+  @OneToMany(() => MatchesEntity, matches => matches.adversary)
+  matches: MatchesEntity[];
+
 }
