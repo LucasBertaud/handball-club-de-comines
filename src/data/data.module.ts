@@ -2,6 +2,8 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ArticleService } from './services/article.service';
 import { ArticleEntity } from './entities/article.entity';
+import { AdversaryTeamsService } from './services/adversary_teams.service';
+import { AdversaryTeamsEntity } from './entities/adversary_teams.entity';
 
 @Module({
   imports: [
@@ -12,12 +14,17 @@ import { ArticleEntity } from './entities/article.entity';
       synchronize: true, // Utilisez `synchronize: true` uniquement en développement
     }),
     TypeOrmModule.forFeature([
-      ArticleEntity
+      ArticleEntity,
+      AdversaryTeamsEntity
     ])
   ],
   exports: [
-    ArticleService
+    ArticleService,
+    AdversaryTeamsService
   ],
-  providers: [ArticleService],
+  providers: [
+    ArticleService, 
+    AdversaryTeamsService
+  ],
 })
 export class DataModule { }

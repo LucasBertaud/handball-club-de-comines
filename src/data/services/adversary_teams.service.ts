@@ -13,7 +13,7 @@ export class AdversaryTeamsService {
     async findAll(): Promise<AdversaryTeamsEntity[]> {
         return this.adversaryTeamsRepository.find();
     }
-    async createArticle(adversaryTeams: AdversaryTeams): Promise<any> {
+    async createAdversaryTeams(adversaryTeams: AdversaryTeams): Promise<any> {
         // Crée une nouvelle instance d'ArticleEntity à partir des propriétés de l'objet Article
         const articleEntity = this.adversaryTeamsRepository.create({
             name: adversaryTeams.name,
