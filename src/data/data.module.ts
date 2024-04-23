@@ -17,15 +17,18 @@ import {MembersService} from "./services/members.service";
             ArticleEntity,
             MembersEntity,
             MembersService,
+            AdversaryTeamsEntity
         ]),
     ],
     exports: [
         ArticleService,
         MembersService,
+        AdversaryTeamsEntity
     ],
     providers: [
         ArticleService,
         MembersService,
+        AdversaryTeamsEntity
     ],
 })
 export class DataModule {
