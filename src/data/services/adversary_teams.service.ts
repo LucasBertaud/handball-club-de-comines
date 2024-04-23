@@ -17,13 +17,21 @@ export class AdversaryTeamsService {
     }
 
     async createAdversaryTeams(adversaryTeams: AdversaryTeams): Promise<any> {
-        // Crée une nouvelle instance d'ArticleEntity à partir des propriétés de l'objet Article
         const articleEntity = this.adversaryTeamsRepository.create({
             name: adversaryTeams.name,
             logo: adversaryTeams.logo,
         });
-        // Enregistre l'entité dans la base de données et retourne l'instance sauvegardée,
-        // qui inclura l'ID généré et d'autres modifications potentielles effectuées lors de la sauvegarde
         return this.adversaryTeamsRepository.save(articleEntity);
+    }
+
+    async deleteAdversaryTeams(id: number): Promise<void> {
+        await this.adversaryTeamsRepository.delete(id);
+    }
+
+    async updateAdversaryTeams(id: number, adversaryTeams: AdversaryTeams): Promise<void> {
+        await this.adversaryTeamsRepository.update(id, {
+            name: adversaryTeams.name,
+            logo: adversaryTeams.logo,
+        })
     }
 }

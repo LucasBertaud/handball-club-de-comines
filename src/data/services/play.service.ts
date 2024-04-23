@@ -1,28 +1,41 @@
 import {Injectable} from "@nestjs/common";
 import {InjectRepository} from "@nestjs/typeorm";
 import {Repository} from "typeorm";
-import { PlayEntity } from "../entities/play.entity";
+import {PlayEntity} from "../entities/play.entity";
+import { Play } from "src/domain/models/play";
 
 @Injectable()
 export class PlayService {
     constructor(
-        @InjectRepository(PlayEntity)
+        @InjectRepository(PlayEntity) 
         private playRepository: Repository<PlayEntity>,
     ) {
-    }
+    } 
 
     async findAll(): Promise<PlayEntity[]> {
-        return this.playRepository.find();
+        return this.playRepository.find(); 
     }
 
-    async createPlay(play: PlayEntity): Promise<any> {
-        // Crée une nouvelle instance d'ArticleEntity à partir des propriétés de l'objet Article
+    async createPlay(play: Play): Promise<any> {
         const playEntity = this.playRepository.create({
-            memberId: play.memberId,
-            matchId: play.matchId
+            match: play.match,
+            member: play.member,
+            matchId: play.matchId,
+            memberId: play.memberId
         });
-        // Enregistre l'entité dans la base de données et retourne l'instance sauvegardée,
-        // qui inclura l'ID généré et d'autres modifications potentielles effectuées lors de la sauvegarde
-        return this.playRepository.save(playEntity);
+        return this.playRepository.save(playEntity);  
+    } 
+
+    async deletePlay(id: number): Promise<void> {
+        await this.playRepository.delete(id);
+    }
+
+    async updatePlay(id: number, play: Play): Promise<void> {
+        await this.playRepository.update(id, {
+            match: play.match,
+            member: play.member,
+            matchId: play.matchId,
+            memberId: play.memberId
+        })
     }
 }

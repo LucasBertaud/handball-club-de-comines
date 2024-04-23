@@ -8,6 +8,6 @@ export class CreateMembersUsecase {
     }
 
     public execute(members: Members): any {
-        return this.membersService.createUser(members);
+        return this.membersService.createMember(members);
     }
 }

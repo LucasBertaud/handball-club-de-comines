@@ -3,6 +3,7 @@ import {DomainModule} from "src/domain/domain.module";
 import {ArticlesController} from "./articles.controller";
 import {MembersController} from "./members.controller";
 import {AdversaryTeamsController} from "./adversaryTeams.controller";
+import {PlayController} from "./play.controller";
 
 @Module({
     imports: [DomainModule],
@@ -10,6 +11,7 @@ import {AdversaryTeamsController} from "./adversaryTeams.controller";
         ArticlesController,
         MembersController,
         AdversaryTeamsController,
+        PlayController
     ],
     providers: [],
 })

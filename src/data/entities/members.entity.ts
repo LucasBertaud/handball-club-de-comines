@@ -19,7 +19,7 @@ export class MembersEntity {
     @Column({ type: 'varchar', length: 255 })
     password: string;
 
-    @Column({ type: 'varchar', length: 20 })
+    @Column({ type: 'varchar', length: 20 }) 
     role: string;
 
     @Column({ type: "date" })
@@ -28,6 +28,6 @@ export class MembersEntity {
     @OneToMany(() => NewsEntity, news => news.member)
     news: NewsEntity[];
 
-    @OneToMany(() => PlayEntity, play => play.member)
+    @OneToMany(() => PlayEntity, play => play.member) 
     plays: PlayEntity[];
 }

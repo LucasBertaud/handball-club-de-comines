@@ -6,18 +6,24 @@ import {CreateMembersUsecase} from "./usecases/create_members.usecase";
 import {GetAllMembersUsecase} from "./usecases/get_all_members.usecase";
 import {GetAllAdversaryTeamsUsecase} from "./usecases/get_all_adversary_teams.usecase";
 import {CreateAdversaryTeamsUsecase} from "./usecases/create_adversary_teams.usecase";
+import { DeleteArticleUsecase } from "./usecases/delete_article.usecase";
+import {GetAllPlayUsecase} from "./usecases/get_all_play.usecase";
+import {CreatePlayUsecase} from "./usecases/create_play.usecase";
+import { UpdateArticleUsecase } from "./usecases/update_article.usecase";
 
 @Module({
     imports: [DataModule],
     providers: [
-        GetAllArticlesUsecase, CreateArticleUsecase,
+        GetAllArticlesUsecase, CreateArticleUsecase, UpdateArticleUsecase, DeleteArticleUsecase,
         GetAllMembersUsecase, CreateMembersUsecase,
         GetAllAdversaryTeamsUsecase, CreateAdversaryTeamsUsecase,
+        GetAllPlayUsecase, CreatePlayUsecase,
     ],
     exports: [
-        GetAllArticlesUsecase, CreateArticleUsecase,
+        GetAllArticlesUsecase, CreateArticleUsecase, UpdateArticleUsecase, DeleteArticleUsecase,
         GetAllMembersUsecase, CreateMembersUsecase,
         GetAllAdversaryTeamsUsecase, CreateAdversaryTeamsUsecase,
+        GetAllPlayUsecase, CreatePlayUsecase,
     ],
 })
 export class DomainModule {

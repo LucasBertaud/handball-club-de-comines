@@ -20,8 +20,8 @@ export class Members {
                 birthdate: Date,
                 register_date: Date,
                 news: NewsEntity[],
-                plays: PlayEntity[]) {
-
+                plays: PlayEntity[]
+    ){
         this.email = email;
         this.firstname = firstname;
         this.lastname = lastname;

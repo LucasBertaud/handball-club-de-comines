@@ -23,7 +23,10 @@ export class MembersController {
     createArticle(
         @Body() dto: CreateMembersDto,
     ) {
-        const article = new Members(
+        dto.birthdate = new Date();
+        dto.register_date = new Date();
+
+        const member = new Members(
             dto.email,
             dto.firstname,
             dto.lastname,
@@ -35,6 +38,6 @@ export class MembersController {
             dto.plays,
         );
 
-        return this.createMembersUsecase.execute(article);
+        return this.createMembersUsecase.execute(member);
     }
 }
