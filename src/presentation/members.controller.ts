@@ -3,7 +3,9 @@ import {GetAllMembersUsecase} from "../domain/usecases/get_all_members.usecase";
 import {CreateMembersUsecase} from "../domain/usecases/create_members.usecase";
 import {CreateMembersDto} from "./dtos/create_members.dto";
 import {Members} from "../domain/models/members";
+import { ApiTags } from "@nestjs/swagger";
 
+@ApiTags('Members')
 @Controller("members")
 export class MembersController {
     constructor(

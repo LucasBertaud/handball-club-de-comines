@@ -3,7 +3,9 @@ import { CreateArticleUsecase } from 'src/domain/usecases/create_article.usecase
 import { GetAllArticlesUsecase } from 'src/domain/usecases/get_all_articles.usecase';
 import { Article } from 'src/domain/models/article';
 import { CreateArticleDto } from './dtos/create_article.dto';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('Articles')
 @Controller('articles')
 export class ArticlesController {
     constructor(
