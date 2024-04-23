@@ -4,6 +4,8 @@ import {ArticleService} from "./services/article.service";
 import {ArticleEntity} from "./entities/article.entity";
 import {MembersEntity} from "./entities/members.entity";
 import {MembersService} from "./services/members.service";
+import {AdversaryTeamsEntity} from "./entities/adversary_teams.entity";
+import {AdversaryTeamsService} from "./services/adversary_teams.service";
 
 @Module({
     imports: [
@@ -17,18 +19,19 @@ import {MembersService} from "./services/members.service";
             ArticleEntity,
             MembersEntity,
             MembersService,
-            AdversaryTeamsEntity
+            AdversaryTeamsEntity,
+            AdversaryTeamsService,
         ]),
     ],
     exports: [
         ArticleService,
         MembersService,
-        AdversaryTeamsEntity
+        AdversaryTeamsService,
     ],
     providers: [
         ArticleService,
         MembersService,
-        AdversaryTeamsEntity
+        AdversaryTeamsService,
     ],
 })
 export class DataModule {
