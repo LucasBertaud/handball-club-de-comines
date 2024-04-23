@@ -3,7 +3,9 @@ import { CreateAdversaryTeamsUsecase } from 'src/domain/usecases/create_adversar
 import { GetAllAdversaryTeamsUsecase } from 'src/domain/usecases/get_all_adversary_teams.usecase';
 import { AdversaryTeams } from 'src/domain/models/adversary_teams';
 import { CreateAdversaryTeamsDto } from './dtos/create_adversary_teams.dto';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('Adversary Teams')
 @Controller('adversaryTeams')
 export class AdversaryTeamsController {
     constructor(
