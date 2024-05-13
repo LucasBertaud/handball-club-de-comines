@@ -22,7 +22,7 @@ export class PlayController {
     createAdversaryTeams(
         @Body() dto: CreatePlayDto
     ) {
-        const play = new Play(dto.memberId, dto.member, dto.matchId, dto.match);
+        const play = new Play(dto.memberId, dto.matchId);
         return this.createPlayUsecase.execute(play);
     } 
 }
