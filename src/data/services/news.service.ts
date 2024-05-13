@@ -16,6 +16,14 @@ export class NewsService {
         return this.newsRepository.find();
     }
 
+    async findById(id: number): Promise<NewsEntity[]> {
+        return this.newsRepository.find({
+            where: {
+                id: id,
+            },
+        });
+    }
+
     async createNews(news: News): Promise<any> {
         const newsEntity = this.newsRepository.create({
             content: news.content,

@@ -1,6 +1,6 @@
 import {Injectable} from "@nestjs/common";
-import {NewsService} from "../../data/services/news.service";
-import {News} from "../models/news";
+import {NewsService} from "../../../data/services/news.service";
+import {News} from "../../models/news";
 
 @Injectable()
 export class CreateNewsUsecase {
