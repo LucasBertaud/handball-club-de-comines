@@ -2,7 +2,7 @@ import {Injectable} from "@nestjs/common";
 import {InjectRepository} from "@nestjs/typeorm";
 import {Repository} from "typeorm";
 import {MembersEntity} from "../entities/members.entity";
-import { Members } from "src/domain/models/members";
+import {Members} from "src/domain/models/members";
 
 @Injectable()
 export class MembersService {
@@ -26,6 +26,7 @@ export class MembersService {
             register_date: members.register_date,
             news: members.news,
             plays: members.plays,
+            birthdate: members.birthdate,
         });
         return this.membersRepository.save(memberEntity);
     }
@@ -39,11 +40,12 @@ export class MembersService {
             email: members.email,
             firstname: members.firstname,
             lastname: members.lastname,
-            role: members.role,
+            birthdate: members.birthdate,
             password: members.password,
+            role: members.role,
             register_date: members.register_date,
             news: members.news,
             plays: members.plays,
-        })
+        });
     }
 }
