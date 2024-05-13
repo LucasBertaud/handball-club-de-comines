@@ -1,4 +1,4 @@
-import {Column, Entity, JoinColumn, ManyToOne, PrimaryColumn} from "typeorm";
+import {Entity, JoinColumn, ManyToOne, PrimaryColumn} from "typeorm";
 import {MatchesEntity} from "./matches.entity";
 import {MembersEntity} from "./members.entity";
 
@@ -6,7 +6,7 @@ import {MembersEntity} from "./members.entity";
 export class PlayEntity {
 
     @PrimaryColumn()
-    memberId: number;
+    memberId: string;
 
     @ManyToOne(() => MembersEntity, member => member.plays)
     @JoinColumn({ name: 'memberId' })
@@ -18,7 +18,4 @@ export class PlayEntity {
     @ManyToOne(() => MatchesEntity, match => match.plays)
     @JoinColumn({ name: 'matchId' })
     match: MatchesEntity;
-
-    @Column({type: 'int'})
-    score: Number;
 } 

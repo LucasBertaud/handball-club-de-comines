@@ -3,12 +3,18 @@ import {InjectRepository} from "@nestjs/typeorm";
 import {Repository} from "typeorm";
 import {PlayEntity} from "../entities/play.entity";
 import { Play } from "src/domain/models/play";
+import { MatchesEntity } from "../entities/matches.entity";
+import { MembersEntity } from "../entities/members.entity";
 
 @Injectable()
 export class PlayService {
     constructor(
         @InjectRepository(PlayEntity) 
         private playRepository: Repository<PlayEntity>,
+        @InjectRepository(MatchesEntity) 
+        private matchesRepository: Repository<MatchesEntity>,
+        @InjectRepository(MembersEntity) 
+        private membersRepository: Repository<MembersEntity>,
     ) {
     } 
 
@@ -17,9 +23,11 @@ export class PlayService {
     }
 
     async createPlay(play: Play): Promise<any> {
+        const match = await this.matchesRepository.findOne({ where: { id: play.matchId } })
+        const member = await this.membersRepository.findOne({where: {email: play.memberId}})
         const playEntity = this.playRepository.create({
-            match: play.match,
-            member: play.member,
+            match: match,
+            member: member,
             matchId: play.matchId,
             memberId: play.memberId
         });
@@ -31,9 +39,11 @@ export class PlayService {
     }
 
     async updatePlay(id: number, play: Play): Promise<void> {
+        const match = await this.matchesRepository.findOne({ where: { id: play.matchId } })
+        const member = await this.membersRepository.findOne({where: { email: play.memberId}})
         await this.playRepository.update(id, {
-            match: play.match,
-            member: play.member,
+            match: match,
+            member: member,
             matchId: play.matchId,
             memberId: play.memberId
         })
