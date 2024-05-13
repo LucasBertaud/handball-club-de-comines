@@ -4,7 +4,8 @@ import {ArticlesController} from "./articles.controller";
 import {MembersController} from "./members.controller";
 import {AdversaryTeamsController} from "./adversaryTeams.controller";
 import {PlayController} from "./play.controller";
-import { MatchesController } from "./matches.controller";
+import {MatchesController} from "./matches.controller";
+import {NewsController} from "./news.controller";
 
 @Module({
     imports: [DomainModule],
@@ -13,7 +14,8 @@ import { MatchesController } from "./matches.controller";
         MembersController,
         AdversaryTeamsController,
         PlayController,
-        MatchesController
+        MatchesController,
+        NewsController,
     ],
     providers: [],
 })

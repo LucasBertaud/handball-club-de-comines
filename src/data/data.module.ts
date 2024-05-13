@@ -8,8 +8,11 @@ import {AdversaryTeamsEntity} from "./entities/adversary_teams.entity";
 import {AdversaryTeamsService} from "./services/adversary_teams.service";
 import {PlayEntity} from "./entities/play.entity";
 import {PlayService} from "./services/play.service";
-import { MatchesEntity } from "./entities/matches.entity";
-import { MatchesService } from "./services/matches.service";
+import {MatchesEntity} from "./entities/matches.entity";
+import {MatchesService} from "./services/matches.service";
+import {NewsEntity} from "./entities/news.entity";
+import {NewsService} from "./services/news.service";
+
 @Module({
     imports: [
         TypeOrmModule.forRoot({
@@ -27,7 +30,9 @@ import { MatchesService } from "./services/matches.service";
             PlayEntity,
             PlayService,
             MatchesEntity,
-            MatchesService
+            MatchesService,
+            NewsEntity,
+            NewsService,
         ]),
     ],
     exports: [
@@ -35,14 +40,16 @@ import { MatchesService } from "./services/matches.service";
         MembersService,
         AdversaryTeamsService,
         PlayService,
-        MatchesService
+        MatchesService,
+        NewsService,
     ],
     providers: [
         ArticleService,
         MembersService,
         AdversaryTeamsService,
         PlayService,
-        MatchesService
+        MatchesService,
+        NewsService,
     ],
 })
 export class DataModule {
