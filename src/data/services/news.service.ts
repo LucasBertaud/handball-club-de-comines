@@ -1,8 +1,8 @@
-import {Injectable} from "@nestjs/common";
+import {Injectable, NotFoundException} from "@nestjs/common";
 import {InjectRepository} from "@nestjs/typeorm";
 import {Repository} from "typeorm";
-import { NewsEntity } from "../entities/news.entity";
-import { News } from "src/domain/models/news";
+import {NewsEntity} from "../entities/news.entity";
+import {News} from "src/domain/models/news";
 
 @Injectable()
 export class NewsService {
@@ -22,7 +22,7 @@ export class NewsService {
             image: news.image,
             member: news.member,
             publication_date: news.publication_date,
-            title: news.title
+            title: news.title,
         });
         return this.newsRepository.save(newsEntity);
     }
@@ -31,13 +31,13 @@ export class NewsService {
         await this.newsRepository.delete(id);
     }
 
-    async updateNews(id: number, news: News): Promise<void> {
-        await this.newsRepository.update(id, {
-            content: news.content,
-            image: news.image,
-            member: news.member,
-            publication_date: news.publication_date,
-            title: news.title
-        })
+    async updateNews(id: number, newsData: Partial<News>): Promise<News> {
+        const news = await this.newsRepository.findOne({where: {id}});
+        if (!news) {
+            throw new NotFoundException(`Article with ID ${id} not found`);
+        }
+        Object.assign(news, newsData);
+        await this.newsRepository.save(news);
+        return news;
     }
 }
