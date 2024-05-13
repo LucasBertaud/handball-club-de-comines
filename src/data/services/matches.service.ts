@@ -1,4 +1,4 @@
-import {Injectable} from "@nestjs/common";
+import {Injectable, NotFoundException} from "@nestjs/common";
 import {InjectRepository} from "@nestjs/typeorm";
 import {Repository} from "typeorm";
 import { MatchesEntity } from "../entities/matches.entity";
@@ -31,13 +31,13 @@ export class MatchesService {
         await this.matchesRepository.delete(id);
     }
 
-    async updateMatches(id: number, matches: Matches): Promise<void> {
-        await this.matchesRepository.update(id, {
-            adversary: matches.adversary,
-            adversary_score: matches.adversary_score,
-            hcc_score: matches.hcc_score,
-            plays: matches.plays,
-            start_date: matches.start_date
-        })
+    async updateMatches(id: number, matches: Partial<Matches>): Promise<Matches> {
+        const match = await this.matchesRepository.findOne({ where: { id } });
+        if (!match) {
+            throw new NotFoundException(`Match with ID ${id} not found`);
+        }
+        Object.assign(match, matches);
+        await this.matchesRepository.save(match);
+        return match;
     }
 }

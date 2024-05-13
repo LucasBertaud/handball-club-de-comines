@@ -13,6 +13,7 @@ import { UpdateArticleUsecase } from "./usecases/update_article.usecase";
 import { CreateMatchesUsecase } from "./usecases/create_matches.usecase";
 import { GetAllMatchesUsecase } from "./usecases/get_all_matches.usecase";
 import { DeleteMatchesUsecase } from "./usecases/delete_matches.usecase";
+import { UpdateMatchUsecase } from "./usecases/update_match.usecase";
 
 @Module({
     imports: [DataModule],
@@ -20,13 +21,13 @@ import { DeleteMatchesUsecase } from "./usecases/delete_matches.usecase";
         GetAllArticlesUsecase, CreateArticleUsecase, UpdateArticleUsecase, DeleteArticleUsecase,
         GetAllMembersUsecase, CreateMembersUsecase,
         GetAllAdversaryTeamsUsecase, CreateAdversaryTeamsUsecase,
-        GetAllPlayUsecase, CreatePlayUsecase, CreateMatchesUsecase, GetAllMatchesUsecase, DeleteMatchesUsecase
+        GetAllPlayUsecase, CreatePlayUsecase, CreateMatchesUsecase, GetAllMatchesUsecase, DeleteMatchesUsecase, UpdateMatchUsecase
     ],
     exports: [
         GetAllArticlesUsecase, CreateArticleUsecase, UpdateArticleUsecase, DeleteArticleUsecase,
         GetAllMembersUsecase, CreateMembersUsecase,
         GetAllAdversaryTeamsUsecase, CreateAdversaryTeamsUsecase,
-        GetAllPlayUsecase, CreatePlayUsecase, CreateMatchesUsecase, GetAllMatchesUsecase, DeleteMatchesUsecase
+        GetAllPlayUsecase, CreatePlayUsecase, CreateMatchesUsecase, GetAllMatchesUsecase, DeleteMatchesUsecase, UpdateMatchUsecase
     ],
 })
 export class DomainModule {
