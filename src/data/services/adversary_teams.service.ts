@@ -1,4 +1,4 @@
-import {Injectable} from "@nestjs/common";
+import {Injectable, NotFoundException} from "@nestjs/common";
 import {InjectRepository} from "@nestjs/typeorm";
 import {Repository} from "typeorm";
 import {AdversaryTeamsEntity} from "../entities/adversary_teams.entity";
@@ -16,6 +16,14 @@ export class AdversaryTeamsService {
         return this.adversaryTeamsRepository.find();
     }
 
+    async findById(id: number): Promise<AdversaryTeamsEntity[]> {
+        return this.adversaryTeamsRepository.find({
+            where: {
+                id: id,
+            },
+        });
+    }
+
     async createAdversaryTeams(adversaryTeams: AdversaryTeams): Promise<any> {
         const articleEntity = this.adversaryTeamsRepository.create({
             name: adversaryTeams.name,
@@ -28,10 +36,13 @@ export class AdversaryTeamsService {
         await this.adversaryTeamsRepository.delete(id);
     }
 
-    async updateAdversaryTeams(id: number, adversaryTeams: AdversaryTeams): Promise<void> {
-        await this.adversaryTeamsRepository.update(id, {
-            name: adversaryTeams.name,
-            logo: adversaryTeams.logo,
-        })
+    async updateAdversaryTeams(id: number, adversaryTeamsData: Partial<AdversaryTeams>): Promise<AdversaryTeams> {
+        const adversaryTeams = await this.adversaryTeamsRepository.findOne({where: {id}});
+        if (!adversaryTeams) {
+            throw new NotFoundException(`AdversaryTeams with ID ${id} not found`);
+        }
+        Object.assign(adversaryTeams, adversaryTeamsData);
+        await this.adversaryTeamsRepository.save(adversaryTeams);
+        return adversaryTeams;
     }
 }

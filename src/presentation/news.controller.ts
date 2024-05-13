@@ -1,17 +1,19 @@
 import {Body, Controller, Delete, Get, Param, Post, Put} from "@nestjs/common";
 import {ApiTags} from "@nestjs/swagger";
-import {GetAllNewsUsecase} from "../domain/usecases/get_all_news.usecase";
-import {CreateNewsUsecase} from "../domain/usecases/create_news.usecase";
+import {GetAllNewsUsecase} from "../domain/usecases/news/get_all_news.usecase";
+import {CreateNewsUsecase} from "../domain/usecases/news/create_news.usecase";
 import {CreateNewsDto} from "./dtos/create_news.dto";
 import {News} from "../domain/models/news";
-import {DeleteNewsUsecase} from "../domain/usecases/delete_news.usecase";
-import {UpdateNewsUsecase} from "../domain/usecases/update_news.usecase";
+import {DeleteNewsUsecase} from "../domain/usecases/news/delete_news.usecase";
+import {UpdateNewsUsecase} from "../domain/usecases/news/update_news.usecase";
+import {GetNewsByIdUsecase} from "../domain/usecases/news/get_news_by_id.usecase";
 
 @ApiTags("News")
 @Controller("news")
 export class NewsController {
     constructor(
         private getAllNewsUsecase: GetAllNewsUsecase,
+        private getNewsByIdUsecase: GetNewsByIdUsecase,
         private createNewsUsecase: CreateNewsUsecase,
         private updateNewsUsecase: UpdateNewsUsecase,
         private deleteNewsUsecase: DeleteNewsUsecase,
@@ -21,6 +23,13 @@ export class NewsController {
     @Get()
     async getNews() {
         return this.getAllNewsUsecase.execute();
+    }
+
+    @Get(":id")
+    async getNewsById(
+        @Param("id") id: number,
+    ) {
+        return this.getNewsByIdUsecase.execute(id);
     }
 
     @Post()

@@ -1,6 +1,6 @@
 import {Injectable} from "@nestjs/common";
 import {ArticleService} from "src/data/services/article.service";
-import {Article} from "../models/article";
+import {Article} from "../../models/article";
 
 @Injectable()
 export class CreateArticleUsecase {
