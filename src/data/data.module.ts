@@ -12,6 +12,7 @@ import {MatchesEntity} from "./entities/matches.entity";
 import {MatchesService} from "./services/matches.service";
 import {NewsEntity} from "./entities/news.entity";
 import {NewsService} from "./services/news.service";
+import { PlayController } from "src/presentation/play.controller";
 
 @Module({
     imports: [

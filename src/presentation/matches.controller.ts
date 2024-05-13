@@ -26,7 +26,7 @@ export class MatchesController {
     async createMatches(
         @Body() dto: CreateMatchesDto
     ) {
-        const match = new Matches(dto.adversary_score, dto.hcc_score, dto.start_date, dto.adversary, dto.plays);
+        const match = new Matches(dto.adversary_score, dto.hcc_score, dto.start_date, dto.adversaryId, dto.plays);
         return this.createMatchesUsecase.execute(match);
     } 
 

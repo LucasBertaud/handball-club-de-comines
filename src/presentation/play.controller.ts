@@ -14,12 +14,12 @@ export class PlayController {
     ) { }
 
     @Get()
-    getAdversaryTeamss() {
+    getPlays() {
         return this.getAllPlayUsecase.execute();
     }
     
     @Post()
-    createAdversaryTeams(
+    createPlay(
         @Body() dto: CreatePlayDto
     ) {
         const play = new Play(dto.memberId, dto.matchId);

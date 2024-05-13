@@ -5,20 +5,20 @@ export class Matches {
   adversary_score: number;
   hcc_score: number;
   start_date: Date;
-  adversary: AdversaryTeamsEntity;
-  plays: PlayEntity[];
+  adversaryId?: number;
+  plays?: string[];
 
   constructor(
     adversary_score: number,
     hcc_score: number,
     start_date: Date,
-    adversary: AdversaryTeamsEntity,
-    plays: PlayEntity[]
+    adversaryId: number,
+    plays: string[]
   ) {
       this.adversary_score = adversary_score;
       this.hcc_score = hcc_score;
       this.start_date = start_date;
-      this.adversary = adversary;
+      this.adversaryId = adversaryId;
       this.plays = plays;
   }
 }
