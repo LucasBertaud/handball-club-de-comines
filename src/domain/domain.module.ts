@@ -15,10 +15,6 @@ import {GetAllMatchesUsecase} from "./usecases/get_all_matches.usecase";
 import {DeleteMatchesUsecase} from "./usecases/delete_matches.usecase";
 import {GetAllNewsUsecase} from "./usecases/get_all_news.usecase";
 import {CreateNewsUsecase} from "./usecases/create_news.usecase";
-import { UpdateArticleUsecase } from "./usecases/update_article.usecase";
-import { CreateMatchesUsecase } from "./usecases/create_matches.usecase";
-import { GetAllMatchesUsecase } from "./usecases/get_all_matches.usecase";
-import { DeleteMatchesUsecase } from "./usecases/delete_matches.usecase";
 import { UpdateMatchUsecase } from "./usecases/update_match.usecase";
 
 @Module({
@@ -27,17 +23,14 @@ import { UpdateMatchUsecase } from "./usecases/update_match.usecase";
         GetAllArticlesUsecase, CreateArticleUsecase, UpdateArticleUsecase, DeleteArticleUsecase,
         GetAllMembersUsecase, CreateMembersUsecase,
         GetAllAdversaryTeamsUsecase, CreateAdversaryTeamsUsecase,
-        GetAllPlayUsecase, CreatePlayUsecase, CreateMatchesUsecase, GetAllMatchesUsecase, DeleteMatchesUsecase, UpdateMatchUsecase
-        GetAllPlayUsecase, CreatePlayUsecase, CreateMatchesUsecase, GetAllMatchesUsecase, DeleteMatchesUsecase,
-        GetAllNewsUsecase, CreateNewsUsecase,
+        GetAllPlayUsecase, CreatePlayUsecase, CreateMatchesUsecase, GetAllMatchesUsecase, DeleteMatchesUsecase, UpdateMatchUsecase, GetAllNewsUsecase, CreateNewsUsecase
     ],
     exports: [
         GetAllArticlesUsecase, CreateArticleUsecase, UpdateArticleUsecase, DeleteArticleUsecase,
         GetAllMembersUsecase, CreateMembersUsecase,
         GetAllAdversaryTeamsUsecase, CreateAdversaryTeamsUsecase,
         GetAllPlayUsecase, CreatePlayUsecase, CreateMatchesUsecase, GetAllMatchesUsecase, DeleteMatchesUsecase,
-        GetAllNewsUsecase, CreateNewsUsecase,
-        GetAllPlayUsecase, CreatePlayUsecase, CreateMatchesUsecase, GetAllMatchesUsecase, DeleteMatchesUsecase, UpdateMatchUsecase
+        GetAllNewsUsecase, CreateNewsUsecase, UpdateMatchUsecase
     ],
 })
 export class DomainModule {
