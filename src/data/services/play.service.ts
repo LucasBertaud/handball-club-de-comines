@@ -53,22 +53,6 @@ export class PlayService {
         await this.playRepository.delete(play);
     }
 
-
-    /*async updatePlay(memberId: string, matchId: number, playData: Partial<Play>): Promise<Play> {
-        const play = await this.playRepository.findOne({
-            where: {
-                memberId: memberId,
-                matchId: matchId,
-            },
-        });
-        if (!play) {
-            throw new NotFoundException(`Play with member ID ${memberId} and match ID ${matchId} not found`);
-        }
-        Object.assign(play, playData);
-        await this.playRepository.save(play);
-        return play;
-    }*/
-
     async updatePlay(memberId: string, matchId: number, playData: Partial<Play>): Promise<Play> {
         await this.playRepository.createQueryBuilder()
             .update(PlayEntity)
