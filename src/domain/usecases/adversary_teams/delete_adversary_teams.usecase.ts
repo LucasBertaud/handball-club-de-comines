@@ -1,12 +1,12 @@
 import {Injectable} from "@nestjs/common";
-import {NewsService} from "../../../data/services/news.service";
+import {AdversaryTeamsService} from "src/data/services/adversary_teams.service";
 
 @Injectable()
-export class DeleteNewsUsecase {
-    constructor(private newsService: NewsService) {
+export class DeleteAdversaryTeamsUsecase {
+    constructor(private adversaryTeamsService: AdversaryTeamsService) {
     }
 
     public execute(id: number): any {
-        return this.newsService.deleteNews(id);
+        return this.adversaryTeamsService.deleteAdversaryTeams(id);
     }
-}    
+}
