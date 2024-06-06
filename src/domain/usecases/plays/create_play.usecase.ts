@@ -1,6 +1,6 @@
 import {Injectable} from "@nestjs/common";
-import {PlayService} from "../../data/services/play.service";
-import {Play} from "../models/play";
+import {PlayService} from "../../../data/services/play.service";
+import {Play} from "../../models/play";
 
 @Injectable()
 export class CreatePlayUsecase {

@@ -9,13 +9,13 @@ export class PlayEntity {
     memberId: string;
 
     @ManyToOne(() => MembersEntity, member => member.plays)
-    @JoinColumn({ name: 'memberId' })
+    @JoinColumn({name: "memberId"})
     member: MembersEntity;
 
     @PrimaryColumn()
     matchId: number;
 
     @ManyToOne(() => MatchesEntity, match => match.plays)
-    @JoinColumn({ name: 'matchId' })
+    @JoinColumn({name: "matchId"})
     match: MatchesEntity;
-} 
+}  

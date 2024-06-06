@@ -6,6 +6,8 @@ import {AdversaryTeamsController} from "./adversaryTeams.controller";
 import {PlayController} from "./play.controller";
 import {MatchesController} from "./matches.controller";
 import {NewsController} from "./news.controller";
+import { JwtService } from "@nestjs/jwt";
+import { AuthController } from "./auth/auth.controller";
 
 @Module({
     imports: [DomainModule],
@@ -16,6 +18,7 @@ import {NewsController} from "./news.controller";
         PlayController,
         MatchesController,
         NewsController,
+        AuthController
     ],
     providers: [],
 })

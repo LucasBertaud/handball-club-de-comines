@@ -1,5 +1,5 @@
 import {Injectable} from "@nestjs/common";
-import {PlayService} from "../../data/services/play.service";
+import {PlayService} from "../../../data/services/play.service";
 
 @Injectable()
 export class GetAllPlayUsecase {
@@ -7,6 +7,6 @@ export class GetAllPlayUsecase {
     }
 
     public execute(): any {
-        return this.playService.findAll(); 
+        return this.playService.findAll();
     }
 } 

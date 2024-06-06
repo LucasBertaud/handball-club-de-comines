@@ -1,11 +1,11 @@
-import {Body, Controller, Delete, Get, Post, Put, Param} from "@nestjs/common";
-import {GetAllMembersUsecase} from "../domain/usecases/get_all_members.usecase";
-import {CreateMembersUsecase} from "../domain/usecases/create_members.usecase";
+import {Body, Controller, Delete, Get, Param, Post, Put} from "@nestjs/common";
+import {GetAllMembersUsecase} from "../domain/usecases/members/get_all_members.usecase";
+import {CreateMembersUsecase} from "../domain/usecases/members/create_members.usecase";
 import {CreateMembersDto} from "./dtos/create_members.dto";
 import {Members} from "../domain/models/members";
 import { ApiTags } from "@nestjs/swagger";
-import {DeleteMembersUsecase} from "../domain/usecases/delete_members.usecase";
-import {UpdateMembersUsecase} from "../domain/usecases/update_members.usecase";
+import {DeleteMembersUsecase} from "../domain/usecases/members/delete_members.usecase";
+import {UpdateMembersUsecase} from "../domain/usecases/members/update_members.usecase";
 import {GetMembersByEmailUsecase} from "../domain/usecases/get_members_by_email.usecase";
 
 
@@ -55,11 +55,11 @@ export class MembersController {
         return this.createMembersUsecase.execute(member);
     }
 
-    @Put(':email')
+    @Put(":email")
     async updateMembers(
-        @Param('email') email: string,
+        @Param("email") email: string,
         @Body() membersData: CreateMembersDto,
-    ) : Promise<Members> {
+    ): Promise<Members> {
         return this.updateMembersUsecase.execute(email, membersData);
     }
 

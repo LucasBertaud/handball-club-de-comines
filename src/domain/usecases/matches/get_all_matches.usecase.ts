@@ -1,5 +1,5 @@
 import {Injectable} from "@nestjs/common";
-import {MatchesService} from "../../data/services/matches.service";
+import {MatchesService} from "../../../data/services/matches.service";
 
 @Injectable()
 export class GetAllMatchesUsecase {
@@ -7,6 +7,6 @@ export class GetAllMatchesUsecase {
     }
 
     public execute(): any {
-        return this.matchesService.findAll(); 
+        return this.matchesService.findAll();
     }
 } 

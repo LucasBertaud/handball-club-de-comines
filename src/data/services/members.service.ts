@@ -3,6 +3,7 @@ import {InjectRepository} from "@nestjs/typeorm";
 import {Repository} from "typeorm";
 import {MembersEntity} from "../entities/members.entity";
 import {Members} from "src/domain/models/members";
+import {hashSync, compareSync} from "bcrypt";
 
 
 @Injectable()
@@ -24,14 +25,23 @@ export class MembersService {
             },
         });
     }
+    
+    async findByEmailAndPassword(email: string, password: string): Promise<MembersEntity> {
+        const member = await this.membersRepository.findOne({where: {email: email}});
+        const passwordHash = compareSync(password, member.password);
+        if (passwordHash) {
+            return member;
+        }
+    }
 
     async createMember(members: Members): Promise<any> {
+        const password = hashSync(members.password, 10);
         const memberEntity = this.membersRepository.create({
             email: members.email,
             firstname: members.firstname,
             lastname: members.lastname,
             role: members.role,
-            password: members.password,
+            password: password,
             register_date: members.register_date,
             news: members.news,
             plays: members.plays,
