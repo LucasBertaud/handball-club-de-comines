@@ -29,9 +29,10 @@ import {UpdateMembersUsecase} from "./usecases/members/update_members.usecase";
 import {DeleteAdversaryTeamsUsecase} from "./usecases/adversary_teams/delete_adversary_teams.usecase";
 import {UpdatePlayUsecase} from "./usecases/plays/update_play.usecase";
 import {DeletePlaysUsecase} from "./usecases/plays/delete_plays.usecase";
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
-    imports: [DataModule],
+    imports: [ConfigModule.forRoot(), DataModule],
     providers: [
         JwtService,
         GetAllArticlesUsecase, CreateArticleUsecase, UpdateArticleUsecase, DeleteArticleUsecase,
