@@ -21,6 +21,14 @@ export class MatchesService {
         return this.matchesRepository.find();
     }
 
+    async findById(id: number): Promise<MatchesEntity[]> {
+        return this.matchesRepository.find({
+            where: {
+                id: id,
+            },
+        });
+    }
+
     async createMatches(matches: Matches): Promise<any> {
         const adversary = await this.adversaryTeamsRepository.findOne({where: {id: matches.adversaryId}})
         const matchesEntity = this.matchesRepository.create({

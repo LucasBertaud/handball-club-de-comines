@@ -6,12 +6,14 @@ import {Matches} from "src/domain/models/matches";
 import {GetAllMatchesUsecase} from "src/domain/usecases/matches/get_all_matches.usecase";
 import {DeleteMatchesUsecase} from "src/domain/usecases/matches/delete_matches.usecase";
 import {UpdateMatchUsecase} from "src/domain/usecases/matches/update_match.usecase";
+import {GetMatchesByIdUsecase} from "src/domain/usecases/matches/get_matches_by_id.usecase";
 
 @ApiTags("Match")
 @Controller("Match")
 export class MatchesController {
     constructor(
         private createMatchesUsecase: CreateMatchesUsecase,
+        private getMatchesByIdUsecase: GetMatchesByIdUsecase,
         private getAllMatchesUsecase: GetAllMatchesUsecase,
         private deleteMatchesUsecase: DeleteMatchesUsecase,
         private updateMatchUsecase: UpdateMatchUsecase,
@@ -21,6 +23,13 @@ export class MatchesController {
     @Get()
     async getMatches() {
         return this.getAllMatchesUsecase.execute();
+    }
+
+    @Get(":id")
+    async getMatchById(
+        @Param("id") id: number,
+    ) {
+        return this.getMatchesByIdUsecase.execute(id);
     }
 
     @Post()

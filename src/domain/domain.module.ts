@@ -30,6 +30,8 @@ import {DeleteAdversaryTeamsUsecase} from "./usecases/adversary_teams/delete_adv
 import {UpdatePlayUsecase} from "./usecases/plays/update_play.usecase";
 import {DeletePlaysUsecase} from "./usecases/plays/delete_plays.usecase";
 import { ConfigModule } from '@nestjs/config';
+import { GetMatchesByIdUsecase } from "./usecases/matches/get_matches_by_id.usecase";
+
 
 @Module({
     imports: [ConfigModule.forRoot(), DataModule],
@@ -42,7 +44,7 @@ import { ConfigModule } from '@nestjs/config';
         GetAllNewsUsecase, GetNewsByIdUsecase, CreateNewsUsecase, DeleteNewsUsecase, UpdateNewsUsecase, LoginUsecase, GetNewsByIdUsecase, CreateNewsUsecase, DeleteNewsUsecase, UpdateNewsUsecase,
         DeleteMembersUsecase, UpdateMembersUsecase,
         GetAllNewsUsecase, GetNewsByIdUsecase, CreateNewsUsecase, DeleteNewsUsecase, UpdateNewsUsecase,
-        DeleteMembersUsecase, UpdateMembersUsecase, DeleteAdversaryTeamsUsecase, GetMembersByEmailUsecase,
+        DeleteMembersUsecase, UpdateMembersUsecase, DeleteAdversaryTeamsUsecase, GetMembersByEmailUsecase, GetMatchesByIdUsecase,
     ],
     exports: [
         GetAllArticlesUsecase, CreateArticleUsecase, UpdateArticleUsecase, DeleteArticleUsecase,
@@ -53,7 +55,7 @@ import { ConfigModule } from '@nestjs/config';
         , GetNewsByIdUsecase, CreateNewsUsecase, DeleteNewsUsecase, UpdateNewsUsecase,
         DeleteMembersUsecase, UpdateMembersUsecase,
         GetAllNewsUsecase, GetNewsByIdUsecase, CreateNewsUsecase, DeleteNewsUsecase, UpdateNewsUsecase,
-        DeleteMembersUsecase, UpdateMembersUsecase, DeleteAdversaryTeamsUsecase, GetMembersByEmailUsecase,
+        DeleteMembersUsecase, UpdateMembersUsecase, DeleteAdversaryTeamsUsecase, GetMembersByEmailUsecase, GetMatchesByIdUsecase,
     ],
 })
 export class DomainModule {
