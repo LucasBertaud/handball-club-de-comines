@@ -1,8 +1,9 @@
-import {Injectable} from "@nestjs/common";
+import {Injectable, NotFoundException} from "@nestjs/common";
 import {InjectRepository} from "@nestjs/typeorm";
 import {Repository} from "typeorm";
 import {MembersEntity} from "../entities/members.entity";
 import {Members} from "src/domain/models/members";
+
 
 @Injectable()
 export class MembersService {
@@ -31,21 +32,17 @@ export class MembersService {
         return this.membersRepository.save(memberEntity);
     }
 
-    async deleteMember(id: number): Promise<void> {
-        await this.membersRepository.delete(id);
+    async deleteMember(email: string): Promise<void> {
+        await this.membersRepository.delete(email);
     }
 
-    async updateMember(id: number, members: Members): Promise<void> {
-        await this.membersRepository.update(id, {
-            email: members.email,
-            firstname: members.firstname,
-            lastname: members.lastname,
-            birthdate: members.birthdate,
-            password: members.password,
-            role: members.role,
-            register_date: members.register_date,
-            news: members.news,
-            plays: members.plays,
-        });
+    async updateMembers(email: string, members: Partial<Members>): Promise<any> {
+        const member = await this.membersRepository.findOne({ where: { email } });
+        if (!member) {
+            throw new NotFoundException(`Member with ID ${email} not found`);
+        }
+        Object.assign(member, members);
+        await this.membersRepository.save(member);
+        return member;
     }
 }
