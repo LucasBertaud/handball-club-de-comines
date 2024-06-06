@@ -21,7 +21,7 @@ import {UpdateNewsUsecase} from "./usecases/news/update_news.usecase";
 import {GetNewsByIdUsecase} from "./usecases/news/get_news_by_id.usecase";
 import {GetAdversaryTeamsByIdUsecase} from "./usecases/adversary_teams/get_adversary_teams_by_id.usecase";
 import {UpdateAdversaryTeamsUsecase} from "./usecases/adversary_teams/update_adversary_teams.usecase";
-import { GetMembersByEmailUsecase } from "./usecases/get_members_by_email.usecase";
+import { GetMembersByEmailUsecase } from "./usecases/members/get_members_by_email.usecase";
 import {LoginUsecase} from "./usecases/auth/auth.usecase";
 import {JwtService} from "@nestjs/jwt";
 import {DeleteMembersUsecase} from "./usecases/members/delete_members.usecase";

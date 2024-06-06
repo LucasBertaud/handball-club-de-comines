@@ -6,7 +6,7 @@ import {Members} from "../domain/models/members";
 import { ApiTags } from "@nestjs/swagger";
 import {DeleteMembersUsecase} from "../domain/usecases/members/delete_members.usecase";
 import {UpdateMembersUsecase} from "../domain/usecases/members/update_members.usecase";
-import {GetMembersByEmailUsecase} from "../domain/usecases/get_members_by_email.usecase";
+import {GetMembersByEmailUsecase} from "../domain/usecases/members/get_members_by_email.usecase";
 
 
 @ApiTags('Members')
