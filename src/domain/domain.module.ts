@@ -25,6 +25,7 @@ import { LoginUsecase } from "./usecases/auth/auth.usecase";
 import { JwtService } from "@nestjs/jwt";
 import { DeleteMembersUsecase } from "./usecases/delete_members.usecase";
 import { UpdateMembersUsecase } from "./usecases/update_members.usecase";
+import { DeleteAdversaryTeamsUsecase } from "./usecases/adversary_teams/delete_adversary_teams.usecase";
 
 @Module({
     imports: [DataModule],
@@ -36,6 +37,8 @@ import { UpdateMembersUsecase } from "./usecases/update_members.usecase";
         GetAllPlayUsecase, CreatePlayUsecase, CreateMatchesUsecase, GetAllMatchesUsecase, DeleteMatchesUsecase, UpdateMatchUsecase,
         GetAllNewsUsecase, GetNewsByIdUsecase, CreateNewsUsecase, DeleteNewsUsecase, UpdateNewsUsecase, LoginUsecase, GetNewsByIdUsecase, CreateNewsUsecase, DeleteNewsUsecase, UpdateNewsUsecase,
         DeleteMembersUsecase, UpdateMembersUsecase,
+        GetAllNewsUsecase, GetNewsByIdUsecase, CreateNewsUsecase, DeleteNewsUsecase, UpdateNewsUsecase,
+        DeleteMembersUsecase, UpdateMembersUsecase, DeleteAdversaryTeamsUsecase,
     ],
     exports: [
         GetAllArticlesUsecase, CreateArticleUsecase, UpdateArticleUsecase, DeleteArticleUsecase,
@@ -45,6 +48,8 @@ import { UpdateMembersUsecase } from "./usecases/update_members.usecase";
         GetAllNewsUsecase, GetNewsByIdUsecase, CreateNewsUsecase, DeleteNewsUsecase, UpdateNewsUsecase, LoginUsecase
 , GetNewsByIdUsecase, CreateNewsUsecase, DeleteNewsUsecase, UpdateNewsUsecase,
         DeleteMembersUsecase, UpdateMembersUsecase,
+        GetAllNewsUsecase, GetNewsByIdUsecase, CreateNewsUsecase, DeleteNewsUsecase, UpdateNewsUsecase,
+        DeleteMembersUsecase, UpdateMembersUsecase, DeleteAdversaryTeamsUsecase,
     ],
 })
 export class DomainModule {
