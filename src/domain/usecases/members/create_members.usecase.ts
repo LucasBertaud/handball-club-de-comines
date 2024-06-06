@@ -1,6 +1,6 @@
 import {Injectable} from "@nestjs/common";
-import {MembersService} from "../../data/services/members.service";
-import {Members} from "../models/members";
+import {MembersService} from "../../../data/services/members.service";
+import {Members} from "../../models/members";
 
 @Injectable()
 export class CreateMembersUsecase {

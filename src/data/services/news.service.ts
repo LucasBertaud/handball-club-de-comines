@@ -42,7 +42,7 @@ export class NewsService {
     async updateNews(id: number, newsData: Partial<News>): Promise<News> {
         const news = await this.newsRepository.findOne({where: {id}});
         if (!news) {
-            throw new NotFoundException(`Article with ID ${id} not found`);
+            throw new NotFoundException(`News with ID ${id} not found`);
         }
         Object.assign(news, newsData);
         await this.newsRepository.save(news);
