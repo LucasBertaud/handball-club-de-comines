@@ -1,4 +1,4 @@
-import {Injectable, NotFoundException} from "@nestjs/common";
+import {Injectable} from "@nestjs/common";
 import {InjectRepository} from "@nestjs/typeorm";
 import {Repository} from "typeorm";
 import {PlayEntity} from "../entities/play.entity";
@@ -22,6 +22,13 @@ export class PlayService {
         return this.playRepository.find();
     }
 
+    async findOneById(memberId: string, matchId: number): Promise<Play> {
+        return this.playRepository.findOneBy({
+            memberId: memberId,
+            matchId: matchId,
+        });
+    }
+
     async createPlay(play: Play): Promise<any> {
         const match = await this.matchesRepository.findOne({where: {id: play.matchId}});
         const member = await this.membersRepository.findOne({where: {email: play.memberId}});
@@ -35,6 +42,9 @@ export class PlayService {
     }
 
     async deletePlay(memberId: string, matchId: number): Promise<void> {
+        console.log(memberId);
+        console.log(matchId);
+
         const play = await this.playRepository.findOneBy({
             memberId: memberId,
             matchId: matchId,
@@ -44,16 +54,34 @@ export class PlayService {
     }
 
 
-    async updatePlay(memberId: string, matchId: number, playData: Partial<Play>): Promise<Play> {
-        const play = await this.playRepository.findOneBy({
-            memberId: memberId,
-            matchId: matchId,
+    /*async updatePlay(memberId: string, matchId: number, playData: Partial<Play>): Promise<Play> {
+        const play = await this.playRepository.findOne({
+            where: {
+                memberId: memberId,
+                matchId: matchId,
+            },
         });
         if (!play) {
-            throw new NotFoundException(`Play with ID ${memberId} and ${matchId} not found`);
+            throw new NotFoundException(`Play with member ID ${memberId} and match ID ${matchId} not found`);
         }
         Object.assign(play, playData);
         await this.playRepository.save(play);
         return play;
+    }*/
+
+    async updatePlay(memberId: string, matchId: number, playData: Partial<Play>): Promise<Play> {
+        await this.playRepository.createQueryBuilder()
+            .update(PlayEntity)
+            .set(playData)
+            .where("memberId = :memberId", {memberId})
+            .andWhere("matchId = :matchId", {matchId})
+            .execute();
+
+        return this.playRepository.findOne({
+            where: {
+                memberId: memberId,
+                matchId: matchId,
+            },
+        });
     }
 }  

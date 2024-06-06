@@ -1,7 +1,5 @@
 import {Module} from "@nestjs/common";
 import {TypeOrmModule} from "@nestjs/typeorm";
-import {ArticleService} from "./services/article.service";
-import {ArticleEntity} from "./entities/article.entity";
 import {MembersEntity} from "./entities/members.entity";
 import {MembersService} from "./services/members.service";
 import {AdversaryTeamsEntity} from "./entities/adversary_teams.entity";
@@ -12,7 +10,6 @@ import {MatchesEntity} from "./entities/matches.entity";
 import {MatchesService} from "./services/matches.service";
 import {NewsEntity} from "./entities/news.entity";
 import {NewsService} from "./services/news.service";
-import { PlayController } from "src/presentation/play.controller";
 
 @Module({
     imports: [
@@ -23,7 +20,6 @@ import { PlayController } from "src/presentation/play.controller";
             synchronize: true, // Utilisez `synchronize: true` uniquement en développement
         }),
         TypeOrmModule.forFeature([
-            ArticleEntity,
             MembersEntity,
             MembersService,
             AdversaryTeamsEntity,
@@ -37,7 +33,6 @@ import { PlayController } from "src/presentation/play.controller";
         ]),
     ],
     exports: [
-        ArticleService,
         MembersService,
         AdversaryTeamsService,
         PlayService,
@@ -45,7 +40,6 @@ import { PlayController } from "src/presentation/play.controller";
         NewsService,
     ],
     providers: [
-        ArticleService,
         MembersService,
         AdversaryTeamsService,
         PlayService,
