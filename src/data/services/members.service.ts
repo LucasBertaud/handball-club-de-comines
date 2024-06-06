@@ -1,9 +1,10 @@
-import {Injectable} from "@nestjs/common";
+import {Injectable, NotFoundException} from "@nestjs/common";
 import {InjectRepository} from "@nestjs/typeorm";
 import {Repository} from "typeorm";
 import {MembersEntity} from "../entities/members.entity";
 import {Members} from "src/domain/models/members";
 import {hashSync, compareSync} from "bcrypt";
+
 
 @Injectable()
 export class MembersService {
@@ -41,22 +42,17 @@ export class MembersService {
         return this.membersRepository.save(memberEntity);
     }
 
-    async deleteMember(id: string): Promise<void> {
-        await this.membersRepository.delete(id);
+    async deleteMember(email: string): Promise<void> {
+        await this.membersRepository.delete(email);
     }
 
-    async updateMember(id: string, members: Members): Promise<void> {
-        const password = hashSync(members.password, 10);
-        await this.membersRepository.update(id, {
-            email: members.email,
-            firstname: members.firstname,
-            lastname: members.lastname,
-            birthdate: members.birthdate,
-            password: password,
-            role: members.role,
-            register_date: members.register_date,
-            news: members.news,
-            plays: members.plays,
-        });
+    async updateMembers(email: string, members: Partial<Members>): Promise<any> {
+        const member = await this.membersRepository.findOne({ where: { email } });
+        if (!member) {
+            throw new NotFoundException(`Member with ID ${email} not found`);
+        }
+        Object.assign(member, members);
+        await this.membersRepository.save(member);
+        return member;
     }
 }
