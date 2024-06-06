@@ -17,6 +17,14 @@ export class MembersService {
         return this.membersRepository.find();
     }
 
+    async findByEmail(email: string): Promise<MembersEntity[]> {
+        return this.membersRepository.find({
+            where: {
+                email: email,
+            },
+        });
+    }
+
     async createMember(members: Members): Promise<any> {
         const memberEntity = this.membersRepository.create({
             email: members.email,

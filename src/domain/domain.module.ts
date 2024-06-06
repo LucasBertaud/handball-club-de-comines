@@ -24,6 +24,7 @@ import {UpdateAdversaryTeamsUsecase} from "./usecases/adversary_teams/update_adv
 import { DeleteMembersUsecase } from "./usecases/delete_members.usecase";
 import { UpdateMembersUsecase } from "./usecases/update_members.usecase";
 import { DeleteAdversaryTeamsUsecase } from "./usecases/adversary_teams/delete_adversary_teams.usecase";
+import { GetMembersByEmailUsecase } from "./usecases/get_members_by_email.usecase";
 
 @Module({
     imports: [DataModule],
@@ -33,7 +34,7 @@ import { DeleteAdversaryTeamsUsecase } from "./usecases/adversary_teams/delete_a
         GetAllAdversaryTeamsUsecase, CreateAdversaryTeamsUsecase, UpdateAdversaryTeamsUsecase, GetAdversaryTeamsByIdUsecase,
         GetAllPlayUsecase, CreatePlayUsecase, CreateMatchesUsecase, GetAllMatchesUsecase, DeleteMatchesUsecase, UpdateMatchUsecase,
         GetAllNewsUsecase, GetNewsByIdUsecase, CreateNewsUsecase, DeleteNewsUsecase, UpdateNewsUsecase,
-        DeleteMembersUsecase, UpdateMembersUsecase, DeleteAdversaryTeamsUsecase,
+        DeleteMembersUsecase, UpdateMembersUsecase, DeleteAdversaryTeamsUsecase, GetMembersByEmailUsecase,
     ],
     exports: [
         GetAllArticlesUsecase, CreateArticleUsecase, UpdateArticleUsecase, DeleteArticleUsecase,
@@ -41,7 +42,7 @@ import { DeleteAdversaryTeamsUsecase } from "./usecases/adversary_teams/delete_a
         GetAllAdversaryTeamsUsecase, CreateAdversaryTeamsUsecase, UpdateAdversaryTeamsUsecase, GetAdversaryTeamsByIdUsecase,
         GetAllPlayUsecase, CreatePlayUsecase, CreateMatchesUsecase, GetAllMatchesUsecase, DeleteMatchesUsecase, UpdateMatchUsecase,
         GetAllNewsUsecase, GetNewsByIdUsecase, CreateNewsUsecase, DeleteNewsUsecase, UpdateNewsUsecase,
-        DeleteMembersUsecase, UpdateMembersUsecase, DeleteAdversaryTeamsUsecase,
+        DeleteMembersUsecase, UpdateMembersUsecase, DeleteAdversaryTeamsUsecase, GetMembersByEmailUsecase,
     ],
 })
 export class DomainModule {

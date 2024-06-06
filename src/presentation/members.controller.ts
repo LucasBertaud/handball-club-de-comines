@@ -6,8 +6,7 @@ import {Members} from "../domain/models/members";
 import { ApiTags } from "@nestjs/swagger";
 import {DeleteMembersUsecase} from "../domain/usecases/delete_members.usecase";
 import {UpdateMembersUsecase} from "../domain/usecases/update_members.usecase";
-
-
+import {GetMembersByEmailUsecase} from "../domain/usecases/get_members_by_email.usecase";
 
 
 @ApiTags('Members')
@@ -15,6 +14,7 @@ import {UpdateMembersUsecase} from "../domain/usecases/update_members.usecase";
 export class MembersController {
     constructor(
         private getAllMembersUsecase: GetAllMembersUsecase,
+        private getMembersByEmailUsecase: GetMembersByEmailUsecase,
         private createMembersUsecase: CreateMembersUsecase,
         private deleteMembersUsecase: DeleteMembersUsecase,
         private updateMembersUsecase: UpdateMembersUsecase,
@@ -24,6 +24,13 @@ export class MembersController {
     @Get()
     getMembers() {
         return this.getAllMembersUsecase.execute();
+    }
+
+    @Get(":email")
+    async getMembersByEmail(
+        @Param("email") email: string,
+    ) {
+        return this.getMembersByEmailUsecase.execute(email);
     }
 
     @Post()
