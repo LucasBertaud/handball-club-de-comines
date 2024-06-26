@@ -43,8 +43,6 @@ export class MembersService {
             role: members.role,
             password: password,
             register_date: members.register_date,
-            news: members.news,
-            plays: members.plays,
             birthdate: members.birthdate,
         });
         return this.membersRepository.save(memberEntity);

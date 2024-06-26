@@ -42,9 +42,6 @@ export class PlayService {
     }
 
     async deletePlay(memberId: string, matchId: number): Promise<void> {
-        console.log(memberId);
-        console.log(matchId);
-
         const play = await this.playRepository.findOneBy({
             memberId: memberId,
             matchId: matchId,

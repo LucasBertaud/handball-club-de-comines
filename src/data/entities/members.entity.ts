@@ -1,4 +1,4 @@
-import { Entity, PrimaryColumn, Column, OneToMany } from 'typeorm';
+import { Entity, PrimaryColumn, Column, OneToMany, JoinColumn } from 'typeorm';
 import { NewsEntity } from './news.entity';
 import { PlayEntity } from './play.entity';
 
@@ -26,8 +26,10 @@ export class MembersEntity {
     register_date: Date;
 
     @OneToMany(() => NewsEntity, news => news.member)
+    @JoinColumn()
     news: NewsEntity[];
 
-    @OneToMany(() => PlayEntity, play => play.member) 
+    @OneToMany(() => PlayEntity, play => play.member)
+    @JoinColumn()
     plays: PlayEntity[];
 }

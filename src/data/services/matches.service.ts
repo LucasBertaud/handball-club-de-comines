@@ -38,7 +38,7 @@ export class MatchesService {
             start_date: matches.start_date
         });
         const matchSaved = await this.matchesRepository.save(matchesEntity);
-        matchSaved.id;
+
         matches.plays.forEach(e => {
             this.playService.createPlay({
                 memberId: e,

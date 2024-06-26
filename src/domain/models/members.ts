@@ -9,18 +9,15 @@ export class Members {
     role: string;
     birthdate: Date;
     register_date: Date;
-    news: NewsEntity[];
-    plays: PlayEntity[];
 
-    constructor(email: string,
-                firstname: string,
-                lastname: string,
-                password: string,
-                role: string,
-                birthdate: Date,
-                register_date: Date,
-                news: NewsEntity[],
-                plays: PlayEntity[]
+    constructor(
+        email: string,
+        firstname: string,
+        lastname: string,
+        password: string,
+        role: string,
+        birthdate: Date,
+        register_date: Date,
     ){
         this.email = email;
         this.firstname = firstname;
@@ -29,7 +26,5 @@ export class Members {
         this.role = role;
         this.birthdate = birthdate;
         this.register_date = register_date;
-        this.news = news;
-        this.plays = plays;
     }
 }

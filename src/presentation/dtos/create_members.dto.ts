@@ -9,6 +9,4 @@ export class CreateMembersDto {
     role: string;
     birthdate: Date; // A mettre en string -> Date
     register_date: Date; // A mettre en string -> Date
-    news: NewsEntity[];
-    plays: PlayEntity[];
 } 

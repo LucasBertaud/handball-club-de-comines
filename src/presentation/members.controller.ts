@@ -48,8 +48,6 @@ export class MembersController {
             dto.role,
             dto.birthdate,
             dto.register_date,
-            dto.news,
-            dto.plays,
         );
 
         return this.createMembersUsecase.execute(member);
